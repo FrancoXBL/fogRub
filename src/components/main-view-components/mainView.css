@@ -1,0 +1,7 @@
+.button-navigate-container{
+    display: flex;
+    max-width: 1000px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}

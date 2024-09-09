@@ -1,0 +1,49 @@
+.small-button {
+    height: 50px;
+    width: 50px;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, color 0.3s;
+    background-color: var(--color-fondo-blanco);
+}
+
+.small-button-icon {
+    font-size: 1.5rem;
+    z-index: 1; /* Asegura que el icono esté por encima del texto */
+}
+
+.small-button-delete {
+    border: 3px solid var(--color-primario-hover);
+    color: var(--color-primario-hover);
+}
+
+.small-button-edit {
+    border: 3px solid var(--color-primario-hover);
+    color: var(--color-primario-hover);
+}
+
+.small-button-home {
+    border-radius: 10px;
+    min-width: 100px;
+    border: 3px solid var(--color-secundario-normal);
+    color: var(--color-secundario-normal);
+}
+
+.small-button-delete:hover {
+    border: 3px solid var(--color-eliminar-normal);
+    color: var(--color-eliminar-normal);
+}
+
+.small-button-edit:hover {
+    border: 3px solid var(--color-enfasis-normal);
+    color: var(--color-enfasis-normal);
+}
+.small-button-home:hover {
+    border: 3px solid var(--color-fondo-blanco);
+    color: var(--color-fondo-blanco);
+    background-color: var(--color-secundario-normal);
+}

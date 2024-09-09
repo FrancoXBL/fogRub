@@ -1,0 +1,23 @@
+.action-button {
+    height: 100px;
+    width: auto;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: backgound-color 0.3s, color 0.3s;
+    background-color: var(--color-fondo-blanco-secundario);
+    color: var(--color-secundario-normal);
+    margin-top: 1rem;
+}
+
+.action-button-icon {
+    font-size: 3rem;
+    z-index: 1; /* Asegura que el icono esté por encima del texto */
+}
+
+.action-button:hover {
+    cursor: pointer;
+    color: var(--color-fondo-blanco);
+    background-color: var(--color-secundario-normal);
+}

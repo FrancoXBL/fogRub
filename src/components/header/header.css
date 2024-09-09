@@ -1,0 +1,21 @@
+.header-container{
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: 3px solid var(--color-border-main); */
+    margin-block-end: 2rem;
+    background-color: var(--color-primario-normal);
+}
+
+.header-title{
+    margin-block:auto;
+    font-size: 3rem;
+    color: white;
+    margin-inline-start: 1rem;
+}
+
+.header-button-usuario{
+    margin-inline-end: 1rem;
+    margin-block: auto;
+}

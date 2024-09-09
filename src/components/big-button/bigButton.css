@@ -1,0 +1,32 @@
+.big-button {
+    height: 200px;
+    width: 200px;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--color-primario-normal);
+    border: 3px solid var(--color-primario-normal);
+}
+
+.big-button-icon {
+    font-size: 4rem;
+    z-index: 1; /* Asegura que el icono esté por encima del texto */
+}
+
+.big-button-text {
+    text-align: center;
+    width: 100%;
+    left: 50%;
+}
+
+.big-button-link{
+    text-decoration: none;
+}
+
+.big-button:hover {
+    border-color: var(--color-primario-hover);
+    color: var(--color-primario-hover); /* Cambia el color del texto e icono en el hover */
+}

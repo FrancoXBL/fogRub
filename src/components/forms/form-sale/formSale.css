@@ -1,0 +1,115 @@
+@import url("searchSale.css");
+
+.form-sale-container {
+  min-width: 500px;
+  margin: auto;
+  background-color: var(--color-fondo-blanco-secundario);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-sale-group {
+  display: flex;
+  color: var(--color-primario-oscuro);
+  width: 100%;
+  min-height: 40px;
+  justify-content: start;
+}
+.form-sale-submit {
+  border: none;
+  border-radius: 10px;
+  padding-inline: 20px;
+  color: var(--color-primario-oscuro);
+  width: 100px;
+  height: 50px;
+}
+.form-sale-submit:hover {
+  cursor: pointer;
+  color: white;
+  background-color: var(--color-secundario-normal);
+}
+.form-sale-label {
+  margin-block: auto;
+  text-align: center;
+  width: 20%;
+}
+.form-sale-input {
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  padding-inline-start: 20px;
+}
+.form-sale-group-last-step {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.form-sale-label-text {
+  margin: auto;
+}
+.form-sale-total {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: var(--color-fondo-blanco);
+  border-radius: 20px;
+  color: var(--color-primario-oscuro);
+}
+.form-sale-paymethod {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: var(--color-fondo-blanco);
+  border-radius: 20px;
+  color: var(--color-primario-oscuro);
+}
+.form-sale-input-total {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-fondo-blanco-secundario);
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  color: var(--color-sumar-hover);
+  padding-inline-start: 10px;
+}
+.option-sale-paymethod {
+  border: none;
+  padding: 10px;
+  width: 60%;
+  color: var(--color-texto-primario);
+  border-radius: 20px;
+  background-color: var(--color-fondo-blanco-secundario);
+}
+.sale-form-submit-button{
+  background-color: var(--color-primario-normal);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: larger;
+  width: 70%;
+}
+.sale-form-submit-button:hover{
+  background-color: var(--color-enfasis-normal);
+  cursor: pointer;
+}
+.box-buttons-form-sale{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.sale-form-print-button{
+  width: auto;
+  border: none;
+  background-color: var(--color-secundario-normal);
+  color: white;
+  border-radius: 10px;
+}
+.sale-form-print-button:hover{
+cursor: pointer;
+background-color: var(--color-secundario-hover);
+}

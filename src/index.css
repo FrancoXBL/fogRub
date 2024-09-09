@@ -1,0 +1,100 @@
+@import url("components/big-button/bigButton.css");
+@import url("components/main-view-components/mainView.css");
+@import url("components/header/header.css");
+@import url("components/articulos-main-view/articulosMainView.css");
+@import url("components/articulos-main-view/articulo-card/articuloCard.css");
+@import url("components/small-button/smallButton.css");
+@import url("components/clientes-main-view/clientesMainView.css");
+@import url("components/clientes-main-view/client-card/clientCard.css");
+@import url("components/forms/form-article/formArticle.css");
+@import url("components/forms/form-client/formClient.css");
+@import url("components/loadScreen/loadScreen.css");
+@import url("components/forms/form-user/formUser.css");
+@import url("components/forms/form-sale/formSale.css");
+@import url("components/caja-diaria/cajaDiaria.css");
+@import url("components/action-button/actionButton.css");
+@import url("components/forms/form-gasto/formGasto.css");
+@import url("components/to-print-ticket/toPrintTicket.css");
+
+:root {
+  /* --color-azul-normal: #E8F5E9;
+    --color-azul-hover: #13283E;
+  
+    --color-verde-normal: #4C7459;
+    --color-verde-hover: #5C8A6D;
+  
+    --color-rojo-normal: #8B3A3A;
+    --color-rojo-hover: #A04A4A;
+  
+    --color-gris-azulado-normal: #4E5C6E;
+    --color-gris-azulado-hover: #627487;
+  
+    --color-violeta-claro-normal: #6A5A8A;
+    --color-violeta-claro-hover: #7A6A9A;
+  
+    --color-violeta-medio-normal: #5A4A7A;
+    --color-violeta-medio-hover: #6A5A8A;
+  
+    --color-amarillo-normal: #A88B4B;
+    --color-amarillo-hover: #B89C5B;
+  
+    --color-azul-opaco-normal: #35658B;
+    --color-azul-opaco-hover: #46779A;
+
+    --color-hover-main: #FFD700;
+
+    --color-border-main: rgb(28, 43, 161); */
+  --color-fondo-blanco: #f8f8f8;
+  --color-fondo-blanco-secundario: #e8e8e8;
+  --color-fondo-principal: #1d4e98;
+  --color-primario-normal: #a496ff;
+  --color-primario-oscuro: #7676cf;
+  --color-primario-hover: #6d5ed1;
+  --color-secundario-normal: #cc4cac;
+  --color-secundario-hover: #d64db4;
+  --color-accion-normal: #ffa726;
+  --color-accion-hover: #fb8c00;
+  --color-enfasis-normal: #ffeb3b;
+  --color-enfasis-hover: #fbc02d;
+  --color-texto-principal: #37474f;
+  --color-texto-secundario: #757575;
+  --color-eliminar-normal: #f44336;
+  --color-eliminar-hover: #d32f2f;
+  --color-sumar-normal: #5d965d;
+  --color-sumar-hover: #6db370;
+}
+
+body {
+  margin: 0px;
+  background-color: var(--color-fondo-blanco);
+  font-family: "Roboto Mono", monospace; /* Prueba con Roboto Mono */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1,
+.button {
+  font-family: "IBM Plex Mono", monospace; /* Prueba con IBM Plex Mono */
+}
+
+p {
+  font-family: "Fira Sans", sans-serif; /* Prueba con Fira Sans */
+}
+
+.navbar {
+  font-family: "Exo 2", sans-serif; /* Prueba con Exo 2 */
+}
+
+.code {
+  font-family: "Space Mono", monospace; /* Prueba con Space Mono */
+}
+
+.header {
+  font-family: "Archivo Black", sans-serif; /* Prueba con Archivo Black */
+}
+
+.secondary-text {
+  font-family: "Rajdhani", sans-serif; /* Prueba con Rajdhani */
+}

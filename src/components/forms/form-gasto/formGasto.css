@@ -1,0 +1,50 @@
+.form-gasto-container{
+    max-width: 1000px;
+    margin: auto;
+    background-color: var(--color-fondo-blanco-secundario);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    }
+
+.form-gasto-group{
+    display: flex;
+    color: var(--color-primario-oscuro);
+    width: 100%;
+    min-height: 40px;
+    justify-content: start;
+    position: relative;
+}
+
+.form-gasto-submit{
+    border: none;
+    border-radius: 10px;
+    padding-inline: 20px;
+    color: var(--color-primario-oscuro);
+    margin-inline-end: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+.form-gasto-submit:hover{
+    cursor: pointer;
+    color: white;
+    background-color: var(--color-secundario-normal);
+}
+
+.form-gasto-label{
+    margin-block: auto;
+    text-align: center;
+    width: 20%;
+}
+.form-gasto-input{
+    position: absolute;
+    right: 0px;
+    width: 80%;
+    border: none;
+    height: 100%;
+    border-radius: 10px;
+    padding-inline-start: 20px;
+}

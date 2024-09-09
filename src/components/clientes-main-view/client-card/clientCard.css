@@ -1,0 +1,22 @@
+.client-card-container{
+    width: 100%;
+    background-color: var(--color-primario-normal);
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 10px;
+}
+
+.client-card-buttons{
+    display: flex;
+    /* flex-direction: column; */
+    gap: 24px;
+    margin-inline-end: 20px;
+}
+
+.client-card-text{
+    margin-block: auto;
+    margin-inline-start: 20px;
+}
+

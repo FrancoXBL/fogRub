@@ -1,0 +1,174 @@
+.caja-diaria-container {
+  width: 1000px;
+  background-color: var(--color-fondo-blanco-secundario);
+  margin: auto;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  height: 500px;
+}
+
+.caja-diaria-balance {
+  background-color: var(--color-fondo-blanco);
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 10px;
+
+  & .caja-diaria-monto-global {
+    width: 100%;
+
+    & .total-global-box {
+      width: 100%;
+      padding: 10px;
+      font-size: x-large;
+      color: var(--color-sumar-normal);
+      background-color: var(--color-fondo-blanco-secundario);
+      border-radius: 15px;
+    }
+  }
+}
+
+.caja-diaria-monto-especifico {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 100%;
+
+  & .caja-diaria-monto-especifico-box {
+    width: 45%;
+    margin: auto;
+    color: var(--color-sumar-normal);
+  }
+
+  & .option-monto-select {
+    border: none;
+    padding: 10px;
+    width: 100%;
+    color: var(--color-texto-primario);
+    border-radius: 20px;
+    background-color: var(--color-fondo-blanco-secundario);
+  }
+}
+
+.caja-diaria-gastos-especifico{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-fondo-blanco-secundario);
+    padding: 10px;
+    border-radius: 15px;
+
+    & span {
+        color: var(--color-eliminar-normal);
+    }
+}
+
+.caja-diaria-ventas-gastos {
+  width: 50%;
+  height: auto;
+  background-color: var(--color-fondo-blanco);
+  padding: 10px;
+  border-radius: 15px;
+
+  & .caja-diaria-ultimas-ventas {
+    width: 100%;
+    height: 45%;
+    overflow-y: auto;
+
+    & .sale-card {
+      width: 95%;
+      background-color: var(--color-fondo-blanco-secundario);
+      padding: 5px;
+      border-radius: 10px;
+      margin-block: 3px;
+      display: flex;
+      justify-content: space-between;
+
+      & .sale-item-icon {
+        color: var(--color-eliminar-normal);
+        background-color: var(--color-fondo-blanco);
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      & .sale-item-icon:hover {
+        color: var(--color-fondo-blanco);
+        background-color: var(--color-eliminar-normal);
+        cursor: pointer;
+      }
+
+      & .sale-item-icon-print {
+        color: var(--color-secundario-normal);
+        margin-inline-end: .5rem;
+        background-color: var(--color-fondo-blanco);
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      & .sale-item-icon-print:hover {
+        color: var(--color-fondo-blanco);
+        background-color: var(--color-secundario-hover);
+        cursor: pointer;
+      }
+    }
+  }
+  & .caja-diaria-ultimas-ventas::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  & .caja-diaria-ultimas-ventas::-webkit-scrollbar-thumb {
+    background-color: var(--color-primario-normal);
+    border-radius: 5px;
+  }
+
+  & .caja-diaria-ultimas-ventas::-webkit-scrollbar-thumb:hover {
+    background-color: var(
+      --color-primario-hover
+    ); /* Color del pulgar al pasar el cursor */
+  }
+}
+
+.button-box{
+  text-decoration: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--color-fondo-blanco-secundario);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+.modal-button-confirm{
+  background-color: var(--color-eliminar-normal);
+  color: var(--color-fondo-blanco);
+}
+.modal-button-confirm:hover{
+  background-color: var(--color-fondo-blanco);
+  color: var(--color-eliminar-normal);
+  cursor: pointer;
+}

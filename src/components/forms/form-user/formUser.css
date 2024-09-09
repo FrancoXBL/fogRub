@@ -1,0 +1,50 @@
+.form-local-container {
+    max-width: 1000px;
+    margin: auto;
+    background-color: var(--color-fondo-blanco-secundario);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-local-group {
+    display: flex;
+    color: var(--color-primario-oscuro);
+    width: 100%;
+    min-height: 40px;
+    justify-content: start;
+    position: relative;
+}
+
+.form-local-submit {
+    border: none;
+    border-radius: 10px;
+    padding-inline: 20px;
+    color: var(--color-primario-oscuro);
+    width: 100px;
+    height: 50px;
+}
+
+.form-local-submit:hover {
+    cursor: pointer;
+    color: white;
+    background-color: var(--color-secundario-normal);
+}
+
+.form-local-label {
+    margin-block: auto;
+    text-align: center;
+    width: 20%;
+}
+
+.form-local-input {
+    position: absolute;
+    right: 0px;
+    width: 80%;
+    border: none;
+    height: 100%;
+    border-radius: 10px;
+    padding-inline-start: 20px;
+}
