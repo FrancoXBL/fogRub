@@ -1,6 +1,7 @@
 import express from "express";
 const app = express();
 import { crearArchivosDiarios } from "./utils/excelUtils.js";
+import cors from 'cors'
 
 import articleRoutes from '../src/routes/article.routes.js'
 import ventasRoutes from '../src/routes/ventas.routes.js'
@@ -9,6 +10,10 @@ import gastosRoutes from '../src/routes/gastos.routes.js'
 import userRoutes from '../src/routes/user.routes.js'
 
 crearArchivosDiarios()
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+}))
 
 app.use(express.json());
 
