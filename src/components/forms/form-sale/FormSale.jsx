@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineSearchOff } from "react-icons/md";
-import z from "zod";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { fetchData } from "../../../../config/fetchData";
-import { sendData } from "../../../../config/sendData.js";
-import LoadScreen from "../../loadScreen/LoadScreen.jsx";
-import { v4 as uuidv4 } from "uuid";
-import { saleSchema } from "../../../schemas/saleSchema.js";
+import { sendData } from "../../../../config/sendData";
+import { calculateTotal, reduceStock } from "../../../../config/saleUtils";
+import { saleSchema } from "../../../schemas/saleSchema";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { FaPrint } from "react-icons/fa";
+import { v4 as uuidv4 } from "uuid";
 
 const SaleForm = () => {
   const [ticketItems, setTicketItems] = useState([]);
@@ -18,9 +16,9 @@ const SaleForm = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [formItem, setFormItem] = useState({
-    name: "",
-    serving: "",
-    price: "",
+    name: "suelto",
+    quantity: "1",
+    price: "0",
     _id: uuidv4(),
   });
   const [sendSale, setSendSale] = useState({
@@ -37,22 +35,18 @@ const SaleForm = () => {
     setSendSale({ ...sendSale, [e.target.name]: e.target.value });
   };
 
-  const calcularTotal = (items = ticketItems) => {
-    let total = 0;
-    items.forEach((item) => {
-      total += parseInt(item.price);
-    });
-    setSendSale((prev) => ({ ...prev, total: total.toString() }));
-  };
-
   const handleAddItem = () => {
-    ticketItems.push(formItem);
-    setTicketItems(ticketItems);
-    calcularTotal();
+    const newItem = {
+      ...formItem,
+      totalPrice: formItem.price * formItem.quantity,
+    };
+    const updatedTicketItems = [...ticketItems, newItem];
+    setTicketItems(updatedTicketItems);
+    calculateTotal(updatedTicketItems, setSendSale);
     setFormItem({
-      name: "",
-      serving: "",
-      price: "",
+      name: "suelto",
+      quantity: "1",
+      price: "0",
       _id: uuidv4(),
     });
     toast.success("Item Agregado");
@@ -77,19 +71,20 @@ const SaleForm = () => {
       toast.success("Venta concretada!");
 
       setFormItem({
-        name: "",
-        serving: "",
-        price: "",
+        name: "suelto",
+        quantity: "1",
+        price: "0",
         _id: uuidv4(),
       });
 
       setTicketItems([]);
-
       setSendSale({
         soldIn: "efectivo",
         total: "0",
         items: [],
       });
+
+      reduceStock(articleList, ticketItems, setArticleList);
     } catch (err) {
       toast.error("Error al concretar la venta");
     }
@@ -98,9 +93,8 @@ const SaleForm = () => {
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
-
     if (value === "") {
-      setFilteredProducts(articleList); // Mostrar todos los artículos si el input está vacío
+      setFilteredProducts(articleList);
     } else {
       const filtered = articleList.filter(
         (article) =>
@@ -112,25 +106,23 @@ const SaleForm = () => {
   };
 
   const handleDelete = (id) => {
-    toast.warning("Producto Eliminado de la lista", {
-      duration: 100,
-    });
+    toast.warning("Producto Eliminado de la lista", { duration: 100 });
     setTicketItems((prevItems) => {
       const newList = prevItems.filter((item) => item._id !== id);
-      calcularTotal(newList); // Pasa la lista filtrada para calcular el total
+      calculateTotal(newList, setSendSale);
       return newList;
     });
   };
 
   const clearSearch = () => {
     setSearchTerm("");
-    setFilteredProducts(articleList); // Reiniciar el filtro
+    setFilteredProducts(articleList);
   };
 
   const selectArticle = (article) => {
     setFormItem({
       name: article.name,
-      serving: article.serving,
+      quantity: "1",
       price: article.price.toString(),
       _id: uuidv4(),
     });
@@ -141,7 +133,7 @@ const SaleForm = () => {
       try {
         const data = await fetchData("articles-list");
         setArticleList(data);
-        setFilteredProducts(data); // Inicializa con todos los artículos
+        setFilteredProducts(data);
       } catch (error) {
         console.error(error);
       }
@@ -158,6 +150,7 @@ const SaleForm = () => {
             Nombre Articulo:
           </label>
           <input
+            required
             className="form-sale-input"
             type="text"
             name="name"
@@ -165,16 +158,16 @@ const SaleForm = () => {
             onChange={handleChangeItem}
           />
         </div>
-
         <div className="form-sale-group">
-          <label className="form-sale-label" htmlFor="serving">
-            Serving:
+          <label className="form-sale-label" htmlFor="quantity">
+            Cantidad:
           </label>
           <input
+            required
             className="form-sale-input"
-            type="text"
-            name="serving"
-            value={formItem.serving}
+            type="number"
+            name="quantity"
+            value={formItem.quantity}
             onChange={handleChangeItem}
           />
         </div>
@@ -185,7 +178,7 @@ const SaleForm = () => {
           </label>
           <input
             className="form-sale-input"
-            type="text"
+            type="number"
             name="price"
             value={formItem.price}
             onChange={handleChangeItem}
@@ -194,7 +187,7 @@ const SaleForm = () => {
 
         <button
           type="button"
-          onClick={() => handleAddItem()}
+          onClick={handleAddItem}
           className="form-sale-submit"
         >
           Sumar!
@@ -241,31 +234,33 @@ const SaleForm = () => {
       </form>
       <div className="info-sale-container">
         <div className="search-item-sale">
-          <div className="search-item-text">
-            {searchTerm ? (
-              <MdOutlineSearchOff
-                className="search-item-icon"
-                onClick={clearSearch}
+          <div className="search-item-sale">
+            <div className="search-item-text">
+              {searchTerm ? (
+                <MdOutlineSearchOff
+                  className="search-item-icon"
+                  onClick={clearSearch}
+                />
+              ) : (
+                <FaSearch className="search-item-icon" />
+              )}
+              <input
+                type="text"
+                placeholder="Buscar artículo..."
+                value={searchTerm}
+                onChange={handleSearch}
               />
-            ) : (
-              <FaSearch className="search-item-icon" />
-            )}
-            <input
-              type="text"
-              placeholder="Buscar artículo..."
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-          </div>
-          <div className="search-items-block">
-            {filteredProducts.map((article, index) => (
-              <div key={index} onClick={() => selectArticle(article)}>
-                <p className="search-item-card">
-                  {article.code.toUpperCase()} - {article.name.toLowerCase()}{" "}
-                  {article.serving} ${article.price}
-                </p>
-              </div>
-            ))}
+            </div>
+            <div className="search-items-block">
+              {filteredProducts.map((article, index) => (
+                <div key={index} onClick={() => selectArticle(article)}>
+                  <p className="search-item-card">
+                    {article.code.toUpperCase()} - {article.name.toLowerCase()}{" "}
+                    {article.serving} ${article.price}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div className="list-items-container">
@@ -273,9 +268,10 @@ const SaleForm = () => {
           <div className="div-item-sale-list">
             {ticketItems.map((article, index) => (
               <div className="sale-item-card" key={index}>
+                {/* Mostrar cantidad antes del nombre del artículo */}
                 <p>
-                  {article.name.toLowerCase()} {article.serving} $
-                  {article.price}
+                  {article.quantity} x {article.name.toLowerCase()}{" "}
+                  {article.serving} - ${article.totalPrice}
                 </p>
                 <FaRegTrashAlt
                   onClick={() => handleDelete(article._id)}

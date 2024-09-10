@@ -42,9 +42,9 @@
     & .search-item-icon{
         margin: auto;
         background-color: var(--color-secundario-normal);
-        padding: 1rem;
-        border-radius: 45%;
+        border-radius: 15px;
         color: var(--color-fondo-blanco-secundario);
+        padding: .5rem;
     }
   }
 

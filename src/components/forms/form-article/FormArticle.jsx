@@ -76,29 +76,6 @@ const FormArticle = () => {
       </div>
 
       <div className="form-article-group">
-        <label className="form-article-label" htmlFor="serving">
-          Serving:
-        </label>
-        <input
-          className="form-article-input"
-          type="string"
-          name="serving"
-          value={formData.serving}
-          onChange={handleChange}
-        />
-        {errorMessages.serving && (
-          <input
-            placeholder={errorMessages.serving}
-            className="form-article-input"
-            type="string"
-            name="serving"
-            value={formData.serving}
-            onChange={handleChange}
-          />
-        )}
-      </div>
-
-      <div className="form-article-group">
         <label className="form-article-label" htmlFor="price">
           Precio:
         </label>

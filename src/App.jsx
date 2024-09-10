@@ -18,6 +18,7 @@ import EditArticle from "./components/articulos-main-view/articulo-edit/EditArti
 import EditClient from "./components/clientes-main-view/cliente-edit/EditClient";
 import DeleteClient from "./components/clientes-main-view/cliente-delete/DeleteClient";
 import DeleteArticle from "./components/articulos-main-view/articulo-delete/DeleteArticle";
+import Navbar from "./components/nav-bar/NavBar";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           stacked={true}
         />
         <Header />
+        <Navbar />
         <Routes>
           <Route path="/" element={<MainView />}></Route>
           <Route path="/usuario" element={<FormUser />}></Route>

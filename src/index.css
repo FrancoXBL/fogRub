@@ -64,6 +64,11 @@
   --color-sumar-hover: #6db370;
 }
 
+.app-container {
+  display: flex;
+  margin-left: 250px; /* Ajusta el contenido principal a la derecha del Navbar */
+}
+
 body {
   margin: 0px;
   background-color: var(--color-fondo-blanco);
@@ -97,4 +102,7 @@ p {
 
 .secondary-text {
   font-family: "Rajdhani", sans-serif; /* Prueba con Rajdhani */
+}
+.app{
+  margin-left: 200px;
 }

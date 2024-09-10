@@ -57,15 +57,15 @@ export default function ToPrintTicket() {
                         <thead>
                             <tr>
                                 <th>Venta</th>
-                                <th>Servicio</th>
-                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Precio unitario</th>
                             </tr>
                         </thead>
                         <tbody>
                             {saleData.items && JSON.parse(saleData.items).map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.name}</td>
-                                    <td>{item.serving}</td>
+                                    <td>{item.quantity}</td>
                                     <td>${item.price}</td>
                                 </tr>
                             ))}

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const itemSchema = z.object({
     name: z.string("El nombre del articulo es requerido"),
-    serving: z.string("Indique el servicio del producto"),
+    quantity: z.string("Indique cuantos items agregar"),
     price: z.string("El articulo a sumar requiere un precio"),
     _id: z.string()
 })

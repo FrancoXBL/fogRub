@@ -32,7 +32,7 @@ const EditArticle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const sendData = { ...formData, fechaActualizacion: fechaActual };
-    
+
     try {
       await editData("articles-list", sendData);
 
@@ -74,29 +74,6 @@ const EditArticle = () => {
             type="text"
             name="name"
             value={formData.name}
-            onChange={handleChange}
-          />
-        )}
-      </div>
-
-      <div className="form-article-group">
-        <label className="form-article-label" htmlFor="serving">
-          Serving:
-        </label>
-        <input
-          className="form-article-input"
-          type="string"
-          name="serving"
-          value={formData.serving}
-          onChange={handleChange}
-        />
-        {errorMessages.serving && (
-          <input
-            placeholder={errorMessages.serving}
-            className="form-article-input"
-            type="string"
-            name="serving"
-            value={formData.serving}
             onChange={handleChange}
           />
         )}

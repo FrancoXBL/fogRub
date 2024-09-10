@@ -1,0 +1,65 @@
+/* Estilos del contenedor principal del Navbar */
+.navbar {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #1e1e1e; /* Fondo azul muy oscuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+  /* Estilo de la lista de navegación */
+  .navbar-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Estilo de cada elemento de la barra de navegación */
+  .navbar-item {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Estilo de los enlaces del Navbar */
+  .navbar-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    width: 100%;
+    color: var(--color-primario-normal);
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+  }
+  
+  /* Estilo de los íconos del Navbar */
+  .navbar-icon {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  /* Efecto hover para los enlaces del Navbar */
+  .navbar-link:hover {
+    background-color: #353535; /* Color de fondo al pasar el ratón */
+    color: #ffffff; /* Color de texto al pasar el ratón */
+    cursor: pointer;
+  }
+  
+  /* Estilo para el enlace activo */
+  .navbar-link.active {
+    background-color: #494949; /* Color del fondo para el enlace activo */
+    color: #ffffff; /* Color de texto para el enlace activo */
+    font-weight: bold;
+  }
+  
