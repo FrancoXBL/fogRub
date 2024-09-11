@@ -1,6 +1,7 @@
 .info-sale-container {
-    width: calc(100% - 500px);
-    height: auto;
+  padding: 20px;
+    min-width: 60%;
+    max-height: auto;
     background-color: var(--color-fondo-blanco-secundario);
     border-radius: 10px;
   }
@@ -14,7 +15,6 @@
   }
 
   .search-item-sale{
-    padding: 20px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    margin: auto;
+    margin-block: none;
 
     & input{
         border: none;
@@ -96,14 +96,12 @@
   }
 
   .div-item-sale-list{
-    padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    height: 160px;
+    height: 300px;
     background-color: var(--color-fondo-blanco);
-    width: 80%;
     margin: auto;
   }
 

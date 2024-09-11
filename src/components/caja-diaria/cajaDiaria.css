@@ -149,6 +149,12 @@
   align-items: center;
 }
 
+.modal-input{
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
 .modal-content {
   background-color: var(--color-fondo-blanco-secundario);
   padding: 20px;
@@ -170,5 +176,10 @@
 .modal-button-confirm:hover{
   background-color: var(--color-fondo-blanco);
   color: var(--color-eliminar-normal);
+  cursor: pointer;
+}
+.modal-button-accept {
+  background-color: var(--color-sumar-normal);
+  color: var(--color-fondo-blanco);
   cursor: pointer;
 }

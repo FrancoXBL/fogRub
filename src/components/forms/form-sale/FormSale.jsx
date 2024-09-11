@@ -11,6 +11,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
 const SaleForm = () => {
+  const [descuento, setDescuento] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const [ticketItems, setTicketItems] = useState([]);
   const [articleList, setArticleList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -27,12 +29,42 @@ const SaleForm = () => {
     items: [],
   });
 
+  const aplicarDescuento = () => {
+    const descuentoAplicado = (sendSale.total * descuento) / 100;
+
+    const newItem = {
+      name: `descuento del %${descuento}`,
+      quantity: "1",
+      price: `-${descuentoAplicado.toString()}`,
+      totalPrice: 0 - descuentoAplicado,
+      _id: uuidv4(),
+    };
+    const updatedTicketItems = [...ticketItems, newItem];
+
+    console.log(updatedTicketItems)
+    setTicketItems(updatedTicketItems);
+    calculateTotal(updatedTicketItems, setSendSale);
+
+    setFormItem({
+      name: "suelto",
+      quantity: "1",
+      price: "0",
+      _id: uuidv4(),
+    });
+    toast.success("Item Agregado");
+    setShowModal(false);
+  };
+
   const handleChangeItem = (e) => {
     setFormItem({ ...formItem, [e.target.name]: e.target.value });
   };
 
   const handleChangeSale = (e) => {
     setSendSale({ ...sendSale, [e.target.name]: e.target.value });
+  };
+
+  const handleAddDescuento = () => {
+    setShowModal(true);
   };
 
   const handleAddItem = () => {
@@ -143,6 +175,33 @@ const SaleForm = () => {
 
   return (
     <div className="sale-container">
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>Ingresa el porcentaje de descuento:</h3>
+            <button
+              className="modal-button-confirm"
+              onClick={() => setShowModal(false)}
+            >
+              Cancelar
+            </button>
+            <input
+              className="modal-input"
+              type="number"
+              min="0"
+              max="100"
+              onChange={(e) => setDescuento(Number(e.target.value))}
+              placeholder="0%"
+            />
+            <button
+              className="modal-button-accept"
+              onClick={() => aplicarDescuento(false)}
+            >
+              Sumar
+            </button>
+          </div>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="form-sale-container">
         <h2>Nueva Venta</h2>
         <div className="form-sale-group">
@@ -185,13 +244,22 @@ const SaleForm = () => {
           />
         </div>
 
-        <button
-          type="button"
-          onClick={handleAddItem}
-          className="form-sale-submit"
-        >
-          Sumar!
-        </button>
+        <div className="form-sale-button-box">
+          <button
+            type="button"
+            onClick={handleAddItem}
+            className="form-sale-submit"
+          >
+            Sumar!
+          </button>
+          <button
+            type="button"
+            onClick={handleAddDescuento}
+            className="form-sale-descuento"
+          >
+            Agregar descuento!
+          </button>
+        </div>
 
         <div className="form-sale-group-last-step">
           <div className="form-sale-total">
@@ -234,33 +302,31 @@ const SaleForm = () => {
       </form>
       <div className="info-sale-container">
         <div className="search-item-sale">
-          <div className="search-item-sale">
-            <div className="search-item-text">
-              {searchTerm ? (
-                <MdOutlineSearchOff
-                  className="search-item-icon"
-                  onClick={clearSearch}
-                />
-              ) : (
-                <FaSearch className="search-item-icon" />
-              )}
-              <input
-                type="text"
-                placeholder="Buscar artículo..."
-                value={searchTerm}
-                onChange={handleSearch}
+          <div className="search-item-text">
+            {searchTerm ? (
+              <MdOutlineSearchOff
+                className="search-item-icon"
+                onClick={clearSearch}
               />
-            </div>
-            <div className="search-items-block">
-              {filteredProducts.map((article, index) => (
-                <div key={index} onClick={() => selectArticle(article)}>
-                  <p className="search-item-card">
-                    {article.code.toUpperCase()} - {article.name.toLowerCase()}{" "}
-                    {article.serving} ${article.price}
-                  </p>
-                </div>
-              ))}
-            </div>
+            ) : (
+              <FaSearch className="search-item-icon" />
+            )}
+            <input
+              type="text"
+              placeholder="Buscar artículo..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+          <div className="search-items-block">
+            {filteredProducts.map((article, index) => (
+              <div key={index} onClick={() => selectArticle(article)}>
+                <p className="search-item-card">
+                  {article.code.toUpperCase()} - {article.name.toLowerCase()}{" "}
+                  {article.serving} ${article.price}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
         <div className="list-items-container">
@@ -271,7 +337,7 @@ const SaleForm = () => {
                 {/* Mostrar cantidad antes del nombre del artículo */}
                 <p>
                   {article.quantity} x {article.name.toLowerCase()}{" "}
-                  {article.serving} - ${article.totalPrice}
+                  {article.serving} $ {article.totalPrice}
                 </p>
                 <FaRegTrashAlt
                   onClick={() => handleDelete(article._id)}
