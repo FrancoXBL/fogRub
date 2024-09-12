@@ -62,6 +62,7 @@
   --color-eliminar-hover: #d32f2f;
   --color-sumar-normal: #5d965d;
   --color-sumar-hover: #6db370;
+  --color-text-fondo-oscuro: #1e1e1e;
 }
 
 .app-container {
@@ -104,5 +105,5 @@ p {
   font-family: "Rajdhani", sans-serif; /* Prueba con Rajdhani */
 }
 .app{
-  margin-left: 200px;
+  padding-left: 200px;
 }

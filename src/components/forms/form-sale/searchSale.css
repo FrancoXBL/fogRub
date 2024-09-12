@@ -1,26 +1,31 @@
 .info-sale-container {
-  padding: 20px;
-    min-width: 60%;
+    padding: 20px;
+    min-width: 450px;
     max-height: auto;
-    background-color: var(--color-fondo-blanco-secundario);
+    background-color: var(--color-fondo-blanco);
     border-radius: 10px;
   }
 
   .sale-container {
-    width: 1000px;
+    background-color: var(--color-fondo-blanco-secundario);
+    max-width: 1000px;
     margin: auto;
     display: flex;
     gap: 1rem;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 15px;
   }
 
   .search-item-sale{
-    border-radius: 20px;
+    background-color: var(--color-fondo-blanco-secundario);
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 1rem;
-    height: auto;
+    padding: .5rem;
+    min-height: 170px;
     max-height: 500px;
   }
 
@@ -49,6 +54,7 @@
   }
 
   .search-items-block{
+    padding-inline-end: 1.2rem;
     overflow-y: scroll;
     overflow-x: hidden;
     display: flex;
@@ -83,12 +89,13 @@
 
   .search-item-card:hover{
     cursor: pointer;
+    background-color: var(--color-primario-normal);
   }
 
   .list-items-container{
     width: 100%;
     height: auto;
-    background-color: var(--color-fondo-blanco-secundario);
+    background-color: var(--color-fondo-blanco);
 
     & h3{
       margin-inline-start: 1rem;
@@ -96,13 +103,16 @@
   }
 
   .div-item-sale-list{
+    padding: .3rem;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    gap: .3rem;
     overflow-y: scroll;
-    height: 300px;
+    height: 200px;
     background-color: var(--color-fondo-blanco);
     margin: auto;
+    border: 1px solid var(--color-text-fondo-oscuro);
   }
 
   .div-item-sale-list::-webkit-scrollbar {

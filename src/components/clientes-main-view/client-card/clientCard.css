@@ -16,6 +16,7 @@
 }
 
 .client-card-text{
+    color: var(--color-text-fondo-oscuro);
     margin-block: auto;
     margin-inline-start: 20px;
 }
