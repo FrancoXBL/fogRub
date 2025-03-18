@@ -15,6 +15,9 @@
 @import url("components/action-button/actionButton.css");
 @import url("components/forms/form-gasto/formGasto.css");
 @import url("components/to-print-ticket/toPrintTicket.css");
+@import url("components/articulos-main-view/articulo-edit/edit-article.css");
+@import url("components/clientes-main-view/cliente-edit/form-client-styles.css");
+
 
 :root {
   /* --color-azul-normal: #E8F5E9;

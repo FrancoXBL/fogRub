@@ -12,21 +12,23 @@ import { fetchData } from "../../../../config/fetchData";
 const EditClient = () => {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-  const { id } = useParams()
+  const { id } = useParams();
 
   const [errorMessages, setErrorMessages] = useState({});
+  const [addAmount, setAddAmount] = useState("");
+  const [subtractAmount, setSubtractAmount] = useState("");
 
   useEffect(() => {
     const getUser = async () => {
-        try {
-            const client = await fetchData(`/clients-list/${id}`)
-            setFormData(client)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    getUser()
-  }, [])
+      try {
+        const client = await fetchData(`/clients-list/${id}`);
+        setFormData(client);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUser();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,6 +58,26 @@ const EditClient = () => {
         toast.error("Error en la validacion de datos del cliente");
       }
     }
+  };
+
+  const handleAddDebt = () => {
+    const amount = Number.parseFloat(addAmount);
+    if (isNaN(amount)) return;
+
+    let newDebt = Number.parseFloat(formData.debt) || 0;
+    newDebt += amount;
+    setFormData({ ...formData, debt: newDebt.toString() });
+    setAddAmount("");
+  };
+
+  const handleSubtractDebt = () => {
+    const amount = Number.parseFloat(subtractAmount);
+    if (isNaN(amount)) return;
+
+    let newDebt = Number.parseFloat(formData.debt) || 0;
+    newDebt -= amount;
+    setFormData({ ...formData, debt: newDebt.toString() });
+    setSubtractAmount("");
   };
 
   return (
@@ -221,6 +243,45 @@ const EditClient = () => {
           />
         )}
       </div>
+      
+      <div className="form-client-group">
+        <div className="debt-adjustment-group">
+          <label>Sumar a la deuda:</label>
+          <div className="debt-adjustment-input-group">
+            <input
+              type="number"
+              value={addAmount}
+              onChange={(e) => setAddAmount(e.target.value)}
+              placeholder="Cantidad a sumar"
+            />
+            <button
+              type="button"
+              onClick={handleAddDebt}
+              className="debt-adjustment-button add-button"
+            >
+              Sumar
+            </button>
+          </div>
+
+          <label>Restar de la deuda:</label>
+          <div className="debt-adjustment-input-group">
+            <input
+              type="number"
+              value={subtractAmount}
+              onChange={(e) => setSubtractAmount(e.target.value)}
+              placeholder="Cantidad a restar"
+            />
+            <button
+              type="button"
+              onClick={handleSubtractDebt}
+              className="debt-adjustment-button subtract-button"
+            >
+              Restar
+            </button>
+          </div>
+        </div>
+      </div>
+
       <h3>Vista previa del Cliente</h3>
       <div className="articulo-card-container">
         <div className="articulo-card-text">

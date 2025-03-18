@@ -11,6 +11,11 @@
   border-radius: 20px;
 }
 
+.clients-title{
+  text-align: center;
+  border-bottom: 2px solid var(--color-primario-normal);
+}
+
 
 .clients-main-container::-webkit-scrollbar {
     width: 5px;
@@ -28,10 +33,9 @@
 
   .search-input-clients{
     outline: none;
-    width: 50%;
     height: 30px;
     border: none;
-    padding: 10px;
+    padding-block: 20px;
     background-color: var(--color-fondo-blanco);
     border-radius: 15px;
   }

@@ -8,8 +8,8 @@ export default function ClientCard({ client }) {
         <div>
           {client.name} ({client.description}) - Deuda Total: ${client.debt}
         </div>
-        <div>{client.celNumber} - {client.notes} - Actualizado por ultima vez: {client.lastEdit}</div>
-        <div>Direccion: {client.direccion}</div>
+        <div>{client.celNumber} - Actualizado por ultima vez: {client.lastEdit} Direccion: {client.direccion}</div>
+        <div>Anotaciones: {client.notes}</div>
       </div>
       <div className="client-card-buttons">
         <SmallButtonNavigate

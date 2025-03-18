@@ -10,7 +10,7 @@ export default function ArticuloCard({ article }) {
           {article.name} {article.serving} - ${article.price}
         </div>
         <div>
-          {article.code} - Actualizado por ultima vez:{" "}
+          Actualizado por ultima vez:{" "}
           {article.fechaActualizacion}
         </div>
       </div>

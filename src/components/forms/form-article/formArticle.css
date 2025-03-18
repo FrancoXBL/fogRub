@@ -26,6 +26,10 @@
     margin-inline-end: 20px;
 }
 
+.articulo-card-container{
+    height: 40px;
+}
+
 .form-article-submit:hover{
     cursor: pointer;
     color: white;

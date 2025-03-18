@@ -41,7 +41,7 @@ const SaleForm = () => {
     };
     const updatedTicketItems = [...ticketItems, newItem];
 
-    console.log(updatedTicketItems)
+    console.log(updatedTicketItems);
     setTicketItems(updatedTicketItems);
     calculateTotal(updatedTicketItems, setSendSale);
 
@@ -174,6 +174,7 @@ const SaleForm = () => {
   }, []);
 
   return (
+    <div>
     <div className="sale-container">
       {showModal && (
         <div className="modal">
@@ -203,7 +204,7 @@ const SaleForm = () => {
         </div>
       )}
       <form onSubmit={handleSubmit} className="form-sale-container">
-        <h2>Nueva Venta</h2>
+        <h2 className="">Nueva Venta</h2>
         <div className="form-sale-group">
           <label className="form-sale-label" htmlFor="name">
             Nombre Articulo:
@@ -322,33 +323,34 @@ const SaleForm = () => {
             {filteredProducts.map((article, index) => (
               <div key={index} onClick={() => selectArticle(article)}>
                 <p className="search-item-card">
-                  {article.code.toUpperCase()} - {article.name.toLowerCase()}{" "}
+                  {article.name.charAt(0).toUpperCase() + article.name.slice(1)}{" "}
                   {article.serving} ${article.price}
                 </p>
               </div>
             ))}
           </div>
         </div>
-        <div className="list-items-container">
-          <h3>Venta actual:</h3>
-          <div className="div-item-sale-list">
-            {ticketItems.map((article, index) => (
-              <div className="sale-item-card" key={index}>
-                {/* Mostrar cantidad antes del nombre del artículo */}
-                <p>
-                  {article.quantity} x {article.name.toLowerCase()}{" "}
-                  {article.serving} $ {article.totalPrice}
-                </p>
-                <FaRegTrashAlt
-                  onClick={() => handleDelete(article._id)}
-                  className="sale-item-icon"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
+      <div className="list-items-container">
+        <h3>Venta actual:</h3>
+        <div className="div-item-sale-list">
+          {ticketItems.map((article, index) => (
+            <div className="sale-item-card" key={index}>
+              {/* Mostrar cantidad antes del nombre del artículo */}
+              <p>
+                {article.quantity} x {article.name.toLowerCase()}{" "}
+                {article.serving} $ {article.totalPrice}
+              </p>
+              <FaRegTrashAlt
+                onClick={() => handleDelete(article._id)}
+                className="sale-item-icon"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      </div>
   );
 };
 

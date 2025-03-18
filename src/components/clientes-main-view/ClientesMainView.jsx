@@ -43,14 +43,14 @@ export default function ClientsMainView() {
     if (error) return <p>Error al cargar clientes: {error}</p>;
 
     return (
-        <div className="clients-main-container">
-            <h2>Lista de Clientes</h2>
+        <div className="articulos-main-container">
+            <h2 className="articles-title">Lista de Clientes</h2>
             <input
                 type="text"
                 placeholder="Buscar clientes por nombre, teléfono, dirección o descripción..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="search-input-clients"
+                className="search-input-articles"
             />
             {filteredClients.map((client) => (
                 <ClientCard key={client.id} client={client} />

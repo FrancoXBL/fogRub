@@ -120,38 +120,11 @@ const FormArticle = () => {
           />
         )}
       </div>
-
-      <div className="form-article-group">
-        <label className="form-article-label" htmlFor="code">
-          Código:
-        </label>
-        <input
-          className="form-article-input"
-          type="text"
-          name="code"
-          value={formData.code}
-          onChange={handleChange}
-        />
-        {errorMessages.code && (
-          <input
-            placeholder={errorMessages.code}
-            className="form-article-input"
-            type="text"
-            name="code"
-            value={formData.code}
-            onChange={handleChange}
-          />
-        )}
-      </div>
       <h3>Vista Previa del Articulo</h3>
       <div className="articulo-card-container">
         <div className="articulo-card-text">
           <div>
             {formData.name} {formData.serving} - ${formData.price}
-          </div>
-          <div>
-            {formData.code} - Actualizado por ultima vez:{" "}
-            {formData.fechaActualizacion}
           </div>
         </div>
         <button type="submit" className="form-article-submit">

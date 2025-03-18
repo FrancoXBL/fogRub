@@ -1,23 +1,101 @@
-.articulo-card-container{
-    width: 100%;
+.articulo-card-container {
+    width: 95%;
+    margin-inline: auto;
     background-color: var(--color-primario-normal);
-    border-radius: 10px;
+    border-radius: 12px;
     color: white;
     display: flex;
     justify-content: space-between;
-    padding-block: 10px;
-}
-
-.articulo-card-buttons{
+    padding: 16px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 16px;
+  }
+  
+  .articulo-card-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .articulo-card-buttons {
     display: flex;
-    /* flex-direction: column; */
-    gap: 24px;
-    margin-inline-end: 20px;
-}
-
-.articulo-card-text{
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .articulo-card-text {
     color: var(--color-text-fondo-oscuro);
-    margin-block: auto;
-    margin-inline-start: 20px;
-}
-
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.95rem;
+  }
+  
+  .articulo-card-text > div:first-child {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .articulo-card-text > div:last-child {
+    opacity: 0.85;
+    font-size: 0.85rem;
+  }
+  
+  .small-button {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    transition: all 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .small-button-icon {
+    font-size: 1.2rem;
+  }
+  
+  .small-button-delete {
+    color: var(--color-primario-hover);
+  }
+  
+  .small-button-edit {
+    color: var(--color-primario-hover);
+  }
+  
+  .small-button-home {
+    border-radius: 10px;
+    min-width: 100px;
+    color: var(--color-secundario-normal);
+    padding: 10px 16px;
+  }
+  
+  .small-button-delete:hover {
+    color: var(--color-eliminar-normal);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .small-button-edit:hover {
+    color: var(--color-enfasis-normal);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .small-button-home:hover {
+    color: var(--color-fondo-blanco);
+    background-color: var(--color-secundario-normal);
+  }
+  
+  @media (max-width: 640px) {
+    .articulo-card-container {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .articulo-card-buttons {
+      justify-content: flex-end;
+    }
+  }
+  
+  

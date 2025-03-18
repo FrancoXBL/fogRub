@@ -1,185 +1,290 @@
-.caja-diaria-container {
-  width: 1000px;
-  background-color: var(--color-fondo-blanco-secundario);
-  margin: auto;
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-around;
-  height: 500px;
+/* Base styles */
+:root {
+  --primary: #6b46c1;
+  --primary-light: #8a6be2;
+  --success: #38a169;
+  --danger: #e53e3e;
+  --gray-100: #f7fafc;
+  --gray-200: #edf2f7;
+  --gray-300: #e2e8f0;
+  --gray-400: #cbd5e0;
+  --gray-500: #a0aec0;
+  --gray-700: #4a5568;
+  --gray-900: #1a202c;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
 }
 
+/* Container layout */
+.caja-diaria-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--gray-900);
+}
+
+/* Balance section */
 .caja-diaria-balance {
-  background-color: var(--color-fondo-blanco);
-  width: 40%;
-  height: auto;
+  background-color: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
-  padding: 10px;
+  gap: 20px;
+}
 
-  & .caja-diaria-monto-global {
-    width: 100%;
+/* Global amount display */
+.caja-diaria-monto-global h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--gray-900);
+}
 
-    & .total-global-box {
-      width: 100%;
-      padding: 10px;
-      font-size: x-large;
-      color: var(--color-sumar-normal);
-      background-color: var(--color-fondo-blanco-secundario);
-      border-radius: 15px;
-    }
-  }
+.total-global-box {
+  background-color: var(--gray-200);
+  padding: 16px;
+  border-radius: var(--radius);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--success);
+  text-align: right;
+}
+
+/* Payment type section */
+.caja-diaria-balance h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--gray-700);
 }
 
 .caja-diaria-monto-especifico {
   display: flex;
-  justify-content: space-around;
-  margin: auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.caja-diaria-monto-select {
+  flex: 1;
+}
+
+.option-monto-select {
   width: 100%;
-
-  & .caja-diaria-monto-especifico-box {
-    width: 45%;
-    margin: auto;
-    color: var(--color-sumar-normal);
-  }
-
-  & .option-monto-select {
-    border: none;
-    padding: 10px;
-    width: 100%;
-    color: var(--color-texto-primario);
-    border-radius: 20px;
-    background-color: var(--color-fondo-blanco-secundario);
-  }
+  padding: 10px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  background-color: white;
+  font-size: 1rem;
+  color: var(--gray-900);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
 }
 
-.caja-diaria-gastos-especifico{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--color-fondo-blanco-secundario);
-    padding: 10px;
-    border-radius: 15px;
-
-    & span {
-        color: var(--color-eliminar-normal);
-    }
+.caja-diaria-monto-especifico-box {
+  background-color: var(--gray-200);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--success);
+  min-width: 150px;
+  text-align: right;
+  flex: 1;
 }
 
-.caja-diaria-ventas-gastos {
-  width: 50%;
-  height: auto;
-  background-color: var(--color-fondo-blanco);
-  padding: 10px;
-  border-radius: 15px;
-
-  & .caja-diaria-ultimas-ventas {
-    width: 100%;
-    height: 45%;
-    overflow-y: auto;
-
-    & .sale-card {
-      width: 95%;
-      background-color: var(--color-fondo-blanco-secundario);
-      padding: 5px;
-      border-radius: 10px;
-      margin-block: 3px;
-      display: flex;
-      justify-content: space-between;
-
-      & .sale-item-icon {
-        color: var(--color-eliminar-normal);
-        background-color: var(--color-fondo-blanco);
-        border-radius: 5px;
-        padding: 5px;
-      }
-
-      & .sale-item-icon:hover {
-        color: var(--color-fondo-blanco);
-        background-color: var(--color-eliminar-normal);
-        cursor: pointer;
-      }
-
-      & .sale-item-icon-print {
-        color: var(--color-secundario-normal);
-        margin-inline-end: .5rem;
-        background-color: var(--color-fondo-blanco);
-        border-radius: 5px;
-        padding: 5px;
-      }
-
-      & .sale-item-icon-print:hover {
-        color: var(--color-fondo-blanco);
-        background-color: var(--color-secundario-hover);
-        cursor: pointer;
-      }
-    }
-  }
-  & .caja-diaria-ultimas-ventas::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
-  & .caja-diaria-ultimas-ventas::-webkit-scrollbar-thumb {
-    background-color: var(--color-primario-normal);
-    border-radius: 5px;
-  }
-
-  & .caja-diaria-ultimas-ventas::-webkit-scrollbar-thumb:hover {
-    background-color: var(
-      --color-primario-hover
-    ); /* Color del pulgar al pasar el cursor */
-  }
+/* Expenses section */
+.caja-diaria-gastos-especifico {
+  background-color: var(--gray-200);
+  padding: 16px;
+  border-radius: var(--radius);
 }
 
-.button-box{
+.caja-diaria-gastos-especifico h3 {
+  margin: 0;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.caja-diaria-gastos-especifico span {
+  font-weight: 600;
+  color: var(--danger);
+}
+
+/* Print button */
+.button-box {
   text-decoration: none;
+  margin-top: 12px;
 }
 
+.button-box button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.button-box button:hover {
+  background-color: var(--primary-light);
+}
+
+
+/* Sales and expenses section */
+.caja-diaria-ventas-gastos {
+  max-height: 500px;
+  background-color: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  overflow-y: scroll;
+}
+
+.subrayado-parcial {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.caja-diaria-ultimas-gastos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+.caja-diaria-ultimas-ventas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Sale and expense cards */
+.sale-card {
+  background-color: var(--gray-200);
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sale-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.sale-card > div {
+  display: flex;
+  align-items: top;
+  gap: 18px;
+}
+
+.sale-item-icon, .sale-item-icon-print {
+  cursor: pointer;
+  font-size: 1.125rem;
+  color: var(--gray-500);
+  transition: color 0.2s;
+}
+
+.sale-item-icon:hover {
+  color: var(--danger);
+}
+
+.sale-item-icon-print:hover {
+  color: var(--primary);
+}
+
+/* Modal styles */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.modal-input{
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .modal-content {
-  background-color: var(--color-fondo-blanco-secundario);
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
+  background-color: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.modal button {
-  margin: 10px;
-  padding: 10px 20px;
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 1.25rem;
+  color: var(--gray-900);
+}
+
+.modal-content button {
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-size: 1rem;
   cursor: pointer;
+  margin-right: 12px;
   border: none;
-  border-radius: 10px;
 }
-.modal-button-confirm{
-  background-color: var(--color-eliminar-normal);
-  color: var(--color-fondo-blanco);
+
+.modal-button-confirm {
+  background-color: var(--danger);
+  color: white;
 }
-.modal-button-confirm:hover{
-  background-color: var(--color-fondo-blanco);
-  color: var(--color-eliminar-normal);
-  cursor: pointer;
+
+.modal-content button:last-child {
+  background-color: var(--gray-300);
+  color: var(--gray-900);
 }
-.modal-button-accept {
-  background-color: var(--color-sumar-normal);
-  color: var(--color-fondo-blanco);
-  cursor: pointer;
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .caja-diaria-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .caja-diaria-monto-especifico {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .caja-diaria-monto-especifico-box {
+    min-width: auto;
+  }
 }

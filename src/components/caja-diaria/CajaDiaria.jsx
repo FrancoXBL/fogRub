@@ -109,7 +109,9 @@ export default function CajaDiaria() {
         <div className="modal">
           <div className="modal-content">
             <h3>¿Estás seguro de que deseas eliminar esta {itemType}?</h3>
-            <button className="modal-button-confirm" onClick={handleDelete}>Confirmar</button>
+            <button className="modal-button-confirm" onClick={handleDelete}>
+              Confirmar
+            </button>
             <button onClick={() => setShowModal(false)}>Cancelar</button>
           </div>
         </div>
@@ -162,7 +164,8 @@ export default function CajaDiaria() {
           {todaySales.map((sale, index) => (
             <div key={index} className="sale-card">
               <div>
-                $ {sale.total} en {sale.soldIn}{" "}
+                $ {sale.total} en{" "}
+                {sale.soldIn.charAt(0).toUpperCase() + sale.soldIn.slice(1)}{" "}
               </div>
               <div>
                 <Link to={`print-ticket/${sale._id}`}>
@@ -176,19 +179,19 @@ export default function CajaDiaria() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="caja-diaria-ultimas-gastos">
+        <h2 className="subrayado-parcial">Gastos Diarios</h2>
         <div className="caja-diaria-ultimas-ventas">
-          <h2 className="subrayado-parcial">Gastos Diarios</h2>
-          <div className="caja-diaria-ultimas-ventas">
-            {todayGastos.map((gasto, index) => (
-              <div key={index} className="sale-card">
-                $ {gasto.total} extraido de {gasto.type}{" "}
-                <FaRegTrashAlt
-                  onClick={() => handleDeleteConfirmation(gasto, "gasto")}
-                  className="sale-item-icon"
-                />
-              </div>
-            ))}
-          </div>
+          {todayGastos.map((gasto, index) => (
+            <div key={index} className="sale-card">
+              $ {gasto.total} para {gasto.description} extraido de {gasto.type}{" "}
+              <FaRegTrashAlt
+                onClick={() => handleDeleteConfirmation(gasto, "gasto")}
+                className="sale-item-icon"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
