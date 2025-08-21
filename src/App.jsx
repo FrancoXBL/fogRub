@@ -19,6 +19,7 @@ import EditClient from "./components/clientes-main-view/cliente-edit/EditClient"
 import DeleteClient from "./components/clientes-main-view/cliente-delete/DeleteClient";
 import DeleteArticle from "./components/articulos-main-view/articulo-delete/DeleteArticle";
 import Navbar from "./components/nav-bar/NavBar";
+import BalanceMainView from "./components/balance-mensual/BalanceMainView.jsx";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path="/clientes/editar/:id" element={<EditClient />}></Route>
           <Route path="/clientes/eliminar/:id" element={<DeleteClient />}></Route>
           <Route path="/articulos/eliminar/:id" element={<DeleteArticle />}></Route>
+          <Route path="/balance-mensual" element={<BalanceMainView />}></Route>
         </Routes>
       </div>
     </>

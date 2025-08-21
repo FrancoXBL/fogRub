@@ -1,0 +1,89 @@
+.balance-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Resumen mensual */
+.resumen-mes {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.resumen-mes h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.resumen-cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.card {
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  min-width: 120px;
+  text-align: center;
+}
+
+.ventas {
+  background: #28a745; /* verde */
+}
+
+.gastos {
+  background: #dc3545; /* rojo */
+}
+
+.balance {
+  background: #e3e3e3; /* azul */
+}
+
+.positivo {
+  color: green;
+  font-weight: bold;
+}
+
+.negativo {
+  color: red;
+  font-weight: bold;
+}
+
+/* Tabla */
+.tabla-section {
+  margin-bottom: 30px;
+}
+
+.tabla-section h3 {
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background: #333;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+}

@@ -1,0 +1,92 @@
+.balance-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+th {
+  background: #3498db;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background: #f4f9ff;
+}
+
+.totals {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: right;
+  color: #2c3e50;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Estilo normal del botón imprimir */
+.btn-print {
+  background: #27ae60;
+  color: white;
+}
+
+.btn-print:hover {
+  background: #219150;
+}
+
+/* Estilo del botón cerrar caja */
+.btn-extra {
+  background: #e67e22;
+  color: white;
+}
+
+.btn-extra:hover {
+  background: #cf6d18;
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.btn-disabled {
+  background: #bdc3c7 !important;
+  color: #6c757d !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+  box-shadow: none;
+}

@@ -1,14 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 import { fetchData } from "../../../config/fetchData";
 import { fechaActual } from "../../../config/dayDate"; // Importación de la fecha actual
+import "./ToPrintDayBalance.css"; // Importamos el CSS
+import { toast } from "react-toastify";
+import { sendData } from "../../../config/sendData";
 
 export default function ToPrintDayBalance() {
   const [todaySales, setTodaySales] = useState([]);
   const [todayGastos, setTodayGastos] = useState([]);
   const [typeSaleList, setTypeSaleList] = useState({});
+  const [typeExpenseList, setTypeExpenseList] = useState([]);
   const [totalGlobal, setTotalGlobal] = useState(0);
   const [totalGastos, setTotalGastos] = useState(0);
-  const [showPreview, setShowPreview] = useState(false); // Estado para mostrar la vista previa
+  const [showPreview, setShowPreview] = useState(false);
+  const [isCajaCerrada, setIsCajaCerrada] = useState(false); // 👉 Estado para controlar si la caja fue cerrada
   const printRef = useRef();
 
   useEffect(() => {
@@ -57,6 +62,7 @@ export default function ToPrintDayBalance() {
     const { totalesPorMetodo, totalGlobal, totalGastos } = separarTotalesPorMetodo(sales, gastos);
     setTotalGlobal(totalGlobal);
     setTypeSaleList(totalesPorMetodo);
+    setTypeExpenseList(gastos);
     setTotalGastos(totalGastos);
   };
 
@@ -83,11 +89,36 @@ export default function ToPrintDayBalance() {
     printWindow.print();
   };
 
+  // 🚀 Nuevo botón (función para cerrar caja)
+  const handleCerrarCaja = () => {
+    const toSend = {
+      fecha: fechaActual,
+      ventas: todaySales,
+      gastos: todayGastos,
+      totalVentas: totalGlobal,
+      totalGastos: totalGastos,
+    };
+
+    console.log(toSend);
+
+    sendData("balance", toSend)
+      .then((response) => {
+        console.log("Caja cerrada:", response);
+      })
+      .catch((error) => {
+        console.error("Error al cerrar caja:", error);
+      });
+
+    setIsCajaCerrada(true);
+    toast.success("Caja cerrada");
+    // 👉 Acá podés agregar la lógica que necesites
+  };
+
   return (
-    <div>
+    <div className="balance-container">
       {!showPreview && (
-          <div ref={printRef}>
-          <h2>Balance Diario - {fechaActual}</h2> {/* Muestra la fecha actual */}
+        <div ref={printRef}>
+          <h2>Balance Diario - {fechaActual}</h2>
           <table>
             <thead>
               <tr>
@@ -97,13 +128,33 @@ export default function ToPrintDayBalance() {
             </thead>
             <tbody>
               {Object.entries(typeSaleList).map(([metodo, total]) => (
-                  <tr key={metodo}>
+                <tr key={metodo}>
                   <td>{metodo}</td>
                   <td>{total.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+
+          <table>
+            <thead>
+              <tr>
+                <th>De donde se gasto</th>
+                <th>Motivo del Gasto</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {typeExpenseList.map(({ description, type, total }) => (
+                <tr key={description}>
+                  <td>{type}</td>
+                  <td>{description}</td>
+                  <td>{total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          
           <div className="totals">
             <p>Total de Ventas: ${totalGlobal.toFixed(2)}</p>
             <p>Total de Gastos: ${totalGastos.toFixed(2)}</p>
@@ -111,7 +162,15 @@ export default function ToPrintDayBalance() {
           </div>
         </div>
       )}
-      <button onClick={handlePrint} className="print-button">Imprimir Balance Diario</button>
+
+      <div className="button-group">
+        <button onClick={handlePrint} className={`btn btn-print ${!isCajaCerrada ? "btn-disabled" : ""}`} disabled={!isCajaCerrada}>
+          Imprimir Balance Diario
+        </button>
+        <button onClick={handleCerrarCaja} className="btn btn-extra">
+          Cerrar Caja
+        </button>
+      </div>
     </div>
   );
 }

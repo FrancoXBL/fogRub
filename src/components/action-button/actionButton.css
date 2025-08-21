@@ -1,23 +1,42 @@
 .action-button {
-    height: 100px;
-    width: auto;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    transition: backgound-color 0.3s, color 0.3s;
-    background-color: var(--color-fondo-blanco-secundario);
-    color: var(--color-secundario-normal);
-    margin-top: 1rem;
+  height: 50px;
+  width: auto;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: backgound-color 0.3s, color 0.3s;
+  background-color: var(--color-fondo-blanco-secundario);
+  color: var(--color-secundario-normal);
+  margin-top: 1rem;
+}
+
+.caja-diaria-close-button {
+  height: 50px;
+  width: auto;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: backgound-color 0.3s, color 0.3s;
+  background-color: var(--color-fondo-blanco-secundario);
+  color: black;
+  margin-top: 1rem;
+}
+
+.caja-diaria-close-button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(69, 69, 69);
 }
 
 .action-button-icon {
-    font-size: 3rem;
-    z-index: 1; /* Asegura que el icono esté por encima del texto */
+  font-size: 1.5rem;
+  z-index: 1; /* Asegura que el icono esté por encima del texto */
 }
 
 .action-button:hover {
-    cursor: pointer;
-    color: var(--color-fondo-blanco);
-    background-color: var(--color-secundario-normal);
+  cursor: pointer;
+  color: var(--color-fondo-blanco);
+  background-color: var(--color-secundario-normal);
 }

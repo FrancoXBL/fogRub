@@ -55,6 +55,7 @@ const FormUser = () => {
         }, {});
         setErrorMessages(errorMessages);
         toast.error("Error en la validación de datos del articulo");
+        console.log(errorMessages);
       } else {
         toast.update("Error en la validación de datos del articulo");
       }

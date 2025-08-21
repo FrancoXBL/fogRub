@@ -4,7 +4,7 @@ import limpiarHoja from "./cleanSheet.js";
 import path from "path";
 import { __dirname } from "../../config/pathConfig.js";
 import fs from 'fs'
-import { fechaActual } from '../../config/dayDate.js'
+import { fechaActual, mesActual } from '../../config/dayDate.js'
 
 // Función para leer un archivo Excel
 export function leerExcel(pathFile) {
@@ -30,11 +30,18 @@ export function crearYGuardarExcel(data, nombreArchivo) {
 // Función para crear archivos específicos (Ventas, Gastos, Balance)
 export function crearArchivosDiarios() {
   const directorioBase = path.join(__dirname, '../cajas-diarias');
+  const directorioBalance = path.join(__dirname, '../cajas-mensuales');
+
   const directorioFecha = path.join(directorioBase, fechaActual);
+  const directorioMesBalance =  path.join(directorioBalance, mesActual);
 
   // Verificar si el directorio "cajas-diarias" existe, si no, crearlo
   if (!fs.existsSync(directorioBase)) {
       fs.mkdirSync(directorioBase, { recursive: true });
+  }
+
+  if (!fs.existsSync(directorioBalance)) {
+      fs.mkdirSync(directorioBalance, { recursive: true });
   }
 
   // Verificar si el directorio con la fecha actual existe, si no, crearlo
@@ -42,9 +49,14 @@ export function crearArchivosDiarios() {
       fs.mkdirSync(directorioFecha);
   }
 
+  if (!fs.existsSync(directorioMesBalance)) {
+      fs.mkdirSync(directorioMesBalance);
+  }
+
   // Rutas de los archivos "caja.xlsx" y "gastos.xlsx"
   const archivoCaja = path.join(directorioFecha, 'ventas.xlsx');
   const archivoGastos = path.join(directorioFecha, 'gastos.xlsx');
+  const archivoBalanceMensual = path.join(directorioMesBalance, 'balance-mensual.xlsx');
 
   // Crear los archivos Excel si no existen
   if (!fs.existsSync(archivoCaja)) {
@@ -59,6 +71,19 @@ export function crearArchivosDiarios() {
       const wsGastos = XLSX.utils.aoa_to_sheet([]); // Hoja vacía
       XLSX.utils.book_append_sheet(wbGastos, wsGastos, 'Gastos');
       XLSX.writeFile(wbGastos, archivoGastos);
+  }
+  if (!fs.existsSync(archivoGastos)) {
+      const wbGastos = XLSX.utils.book_new();
+      const wsGastos = XLSX.utils.aoa_to_sheet([]); // Hoja vacía
+      XLSX.utils.book_append_sheet(wbGastos, wsGastos, 'Gastos');
+      XLSX.writeFile(wbGastos, archivoGastos);
+  }
+
+  if (!fs.existsSync(archivoBalanceMensual)) {
+      const wbBalance = XLSX.utils.book_new();
+      const wsBalance = XLSX.utils.aoa_to_sheet([]); // Hoja vacía
+      XLSX.utils.book_append_sheet(wbBalance, wsBalance, 'Balance Mensual');
+      XLSX.writeFile(wbBalance, archivoBalanceMensual);
   }
 
   // console.log(`Archivos diarios creados en la carpeta ${directorioFecha}`);

@@ -8,6 +8,7 @@ import ventasRoutes from '../src/routes/ventas.routes.js'
 import clientRoutes from '../src/routes/client.routes.js'
 import gastosRoutes from '../src/routes/gastos.routes.js'
 import userRoutes from '../src/routes/user.routes.js'
+import balanceRoutes from '../src/routes/balance-mensual.routes.js'
 
 crearArchivosDiarios()
 
@@ -22,6 +23,7 @@ app.use('/api', clientRoutes)
 app.use('/api', ventasRoutes)
 app.use('/api', gastosRoutes)
 app.use('/api', userRoutes)
+app.use('/api', balanceRoutes)
 
 app.listen(3500);
 

@@ -9,6 +9,7 @@
     overflow: hidden;
     color: var(--color-primario-normal);
     border: 3px solid var(--color-primario-normal);
+    margin: auto;
 }
 
 .big-button-icon {

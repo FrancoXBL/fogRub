@@ -7,6 +7,8 @@ import ActionButton from "../action-button/ActionButton";
 import { PiPrinterBold } from "react-icons/pi";
 import { FaPrint } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { BsDoorClosed } from "react-icons/bs";
+
 
 export default function CajaDiaria() {
   const [todaySales, setTodaySales] = useState([]);
@@ -36,6 +38,10 @@ export default function CajaDiaria() {
       console.log(error);
     }
   };
+
+  function handleCloseCashBox() {
+    
+  }
 
   function separarTotalesPorMetodo(ventas, gastos) {
     const totalesPorMetodo = {};
@@ -151,12 +157,15 @@ export default function CajaDiaria() {
           </h3>
         </div>
 
-        <Link to={"/caja-diaria/print-day-balance"} className="button-box">
+      <Link to={"/caja-diaria/print-day-balance"} className="button-box">
           <ActionButton
-            icon={<PiPrinterBold />}
-            text={"Imprimir Caja Diaria"}
-          />
-        </Link>
+            onClick={handleCloseCashBox}
+            text={"Cerrar Caja"}
+            style="caja-diaria-close-button"
+            icon={<BsDoorClosed />}
+            />
+            </Link>
+
       </div>
       <div className="caja-diaria-ventas-gastos">
         <h2 className="subrayado-parcial">Ventas</h2>

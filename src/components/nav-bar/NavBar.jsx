@@ -3,11 +3,12 @@ import { NavLink } from "react-router-dom"; // Para navegar entre rutas
 import { BiCartAdd } from "react-icons/bi";
 import { TbClipboardList, TbClipboardPlus } from "react-icons/tb";
 import { MdOutlinePersonOutline, MdOutlinePersonAddAlt1 } from "react-icons/md";
-import { IoTodayOutline } from "react-icons/io5";
+import { IoAlbumsOutline, IoTodayOutline } from "react-icons/io5";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import { PiHandArrowUpBold } from "react-icons/pi";
 import "./Navbar.css"; // Importa el archivo CSS para estilos
+import { BsDoorClosed } from "react-icons/bs";
 
 export default function Navbar() {
   return (
@@ -35,6 +36,18 @@ export default function Navbar() {
           <NavLink to="/caja-diaria" className="navbar-link">
             <IoTodayOutline className="navbar-icon" />
             Caja Diaria
+          </NavLink>
+        </li>
+        <li className="navbar-item">
+          <NavLink to="/balance-mensual" className="navbar-link">
+            <IoAlbumsOutline className="navbar-icon" />
+            Balance Mensual
+          </NavLink>
+        </li>
+        <li className="navbar-item">
+          <NavLink to="/caja-diaria/print-day-balance" className="navbar-link">
+            <BsDoorClosed className="navbar-icon" />
+            Cerrar Caja Diaria
           </NavLink>
         </li>
         <li className="navbar-item">
